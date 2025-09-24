@@ -1,5 +1,32 @@
-#Ignore the output folders created during the quality control analysis 01_QC_reads.sh
+# Ignore SLURM output logs
 *.out
+
+# Ignore raw and processed sequencing data
 *.fastq
 *.fastq.gz
+*.fq
+*.fq.gz
+
+# Ignore k-mer counting outputs
 *.jf
+*.histo
+
+# Ignore FastQC/fastp outputs
+*.zip
+*.html
+*.json
+
+# Ignore assemblies (can be many GB)
+*.gfa
+*.fasta
+*.fa
+
+# Ignore assembler working directories
+assembly/
+read_QC/
+
+# Keep scripts and configs
+!scripts/
+!*.sh
+!*.md
+!*.gitignore
