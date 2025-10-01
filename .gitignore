@@ -1,31 +1,69 @@
-# Ignore SLURM output logs
+# -----------------------
+# Cluster / SLURM outputs
+# -----------------------
 *.out
+slurm-*.out
+*.log
 
-# Ignore raw and processed sequencing data
+# -----------------------
+# Raw and processed reads
+# -----------------------
 *.fastq
 *.fastq.gz
 *.fq
 *.fq.gz
 
-# Ignore k-mer counting outputs
+# -----------------------
+# K-mer counting outputs
+# -----------------------
 *.jf
 *.histo
 
-# Ignore FastQC/fastp outputs
+# -----------------------
+# QC outputs (FastQC / fastp)
+# -----------------------
 *.zip
 *.html
 *.json
 
-# Ignore assemblies (can be many GB)
+# -----------------------
+# Assemblies (large files)
+# -----------------------
 *.gfa
 *.fasta
 *.fa
 
-# Ignore assembler working directories
+# -----------------------
+# Assembler working directories
+# -----------------------
 assembly/
 read_QC/
+Trinity.tmp*/        
+chrysalis/
+inchworm.*.fa*
+read_partitions/
+jellyfish.kmers.*.fa*
+salmon_outdir/
 
-# Keep scripts and configs
+# -----------------------
+# BUSCO outputs (ignore everything)
+# -----------------------
+busco/
+busco_downloads/
+
+# -----------------------
+# QUAST outputs (ignore everything)
+# -----------------------
+quast/
+
+# -----------------------
+# Merqury outputs (ignore everything)
+# -----------------------
+merqury/
+
+# -----------------------
+# Keep scripts, configs, docs
+# -----------------------
 !scripts/
 !*.sh
 !*.md
