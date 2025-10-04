@@ -60,6 +60,7 @@ quast/
 # Merqury outputs (ignore everything)
 # -----------------------
 merqury/
+*.meryl
 
 # -----------------------
 # Keep scripts, configs, docs
@@ -68,3 +69,12 @@ merqury/
 !*.sh
 !*.md
 !*.gitignore
+
+# -----------------------
+# mummer outputs (ignore everything)
+# -----------------------
+*.gp
+*.fplot
+*.filter
+*.delta
+*.rplot
