@@ -10,13 +10,13 @@
 # Paths
 # -----------------------
 WORKDIR=/data/users/lland/assembly_annotation_course
-OUTDIR=$WORKDIR/mummer_between_accessions
+OUTDIR=$WORKDIR/mummer_between_accessions/best_assemblies
 mkdir -p $OUTDIR
 
 # Preferred assemblies per accession (adjust these!)
-ACC1=/data/users/lland/assembly_annotation_course/assembly/hifiasm/istisu1.bp.p_ctg.fa # Accession A
-ACC2=/data/users/aballah/assembly_annotation_course/outputs/hifiasm/assembly.fasta   # Accession B
-ACC3=/data/users/kweisensee/assembly/output/hifiasm/No-0.fa      # Accession C
+ACC1=/data/users/lland/assembly_annotation_course/assembly/flye/assembly.fasta # Accession A
+ACC2=/data/users/aballah/assembly_annotation_course/outputs/flye/assembly.fasta    # Accession B
+ACC3=/data/users/kweisensee/assembly/output/flye/assembly.fasta   # Accession C
 
 # Container
 CONTAINER=/containers/apptainer/mummer4_gnuplot.sif
