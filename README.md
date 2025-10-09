@@ -1,8 +1,13 @@
 # Genome and Transcriptome Assembly
-In this course, we aim to de novo assemble an Arabidopsis thaliana accession Istisu-1. 
-This genome assembly will be annotated thanks to transcriptomics data coming from another accession line, Sha. 
+
+In this course, we aim to de novo assemble the genome of an Arabidopsis thaliana accession Istisu-1, as well as the transcriptome of another accession, Sha. 
 
 Published data is openly accessible at https://www.nature.com/articles/s41588-024-01715-9 and https://www.nature.com/articles/s41467-020-14779-y. 
+
+## Datasets 
+
+For genomic data: whole genome PacBio HiFi long reads
+For transcriptomic data: whole transcriptome Illumina paired-end short reads
 
 ## Table of Content
 
@@ -13,6 +18,7 @@ Published data is openly accessible at https://www.nature.com/articles/s41588-02
 4. [Genome Comparison](#genome-comparison)
 
 ## Quality Control of long and short reads
+
 The first step is to control the quality of the genome and transcriptome sequence reads using fastqc tool. 
 
 Run script 01_run_fastqc.sh
@@ -33,6 +39,7 @@ The total number of bases on the PacBio WGS data is of 5.993795 Gb, which approx
 The haploid genome size of A. thaliana is approximately 135 Mb (https://plants.ensembl.org/Arabidopsis_thaliana/Info/Index#:~:text=Arabidopsis%20thaliana%20has%20a%20genome,haploid%20chromosome%20number%20of%20five.). Since coverage is defined as Coverage = Total Bases Sequenced / Genome Size, we can assume that the expected coverage is around 44.4X for the PacBio dataset. 
 
 ## Estimated genome length, coverage and heterozygosity
+
 To further validate the quality of the sequencing data, coverage depth, error rate, heterozygosity and genome size consistency can be assessed using k-mer analysis. 
 To that end, we use jellyfish to count canonical k-mers (k = 21) and use the kmer counts to build an histogram using the model-fittig GenomeScope tool. 
 
@@ -43,6 +50,7 @@ The estimated genome size from the k-mer histogram appears to be between 134,298
 Interestingly, the 44x coverage expectation from fastp does not match the peak fitted by GenomeScope, that appears rather around 38-39x. This is likely due to very short reads and low-quality k-mers reported earlier, as well as error k-mers that inflate the denominator in the previous fastp calculation. 
 
 ## Genome and Transcriptome assembly
+
 After k-mer counting, four different assembly tools are used: flye, hifiasm and LJA for genomic assembly of the Istisu-1 PacBio HiFi long reads, and Trinity for transcriptomic assembly of Sha Illumina short reads. 
 
 Flye is a straightforward tool that contains a complete pipeline from raw reads to polished contigs. Here, the only notable option use is --pacbio that specifies the type of genomic data sequences. 
@@ -56,6 +64,7 @@ Finally, Trinity allows for de novo transcriptomic assembly by constructing De B
 Run scripts 04_a_runflye.sh, 04b_run_hifiasm.sh, 04c_run_LJA.sh and 04d_run_trinity.sh
 
 ## Genome Assembly Evaluation
+
 To assess the quality of our assemblies, BUSCO, QUAST and Merqury analysis are performed. 
 
 BUSCO estimates the completeness and redundancy based on universal single-copy orthologs. Here, we are using the brassicales lineage against our accession. Completeness percentages, as single copy or duplicated scores, fragmentation and missing matches are reported into short.summary.txt files for each assembly, that can  thenbe plotted using the provided R script. Transcriptome assemblies can also be assessed using this tool. 
@@ -71,10 +80,14 @@ Finally, Mequry is a reference-free assembly that performs k-mers analysis on th
 Run 07a_run_merqury.sh
 
 ## Genome Comparison
-Additionally, it is possible to perform pairwise genome comparisons on our assemblies, as well as genome comparison of each against the reference. In that end, MUMmer is used to align based on sequence similarities. 
+
+Additionally, it is possible to perform pairwise genome comparisons on our assemblies, as well as genome comparison of each against the reference. In that end, we are using MUMmer and NUCmer genome alignemnet and comparison tools. MUMmer identifies MUMs (Maximal Unique Matches) between two or more DNA sequences and allows for visualization of their similarities and differences. 
+NUSmer is MUMmer's main aligment module, which is optimized for nucleotide-level comparisons of long DNA sequences such as contigs or complete genomes. 
 
 Run 08_run_nucmer_mummer.sh
 
 Finally, it can be of interest to compare the chosen final assembly of one accession against that of a colleague. 
 
 Run 09_run_mummer_between_accessions.sh
+
+
