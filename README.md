@@ -2,12 +2,11 @@
 
 In this course, we aim to de novo assemble the genome of an Arabidopsis thaliana accession Istisu-1, as well as the transcriptome of another accession, Sha. 
 
-Published data is openly accessible at https://www.nature.com/articles/s41588-024-01715-9 and https://www.nature.com/articles/s41467-020-14779-y. 
-
 ## Datasets 
 
 For genomic data: whole genome PacBio HiFi long reads
 For transcriptomic data: whole transcriptome Illumina paired-end short reads
+Published data is openly accessible at https://www.nature.com/articles/s41588-024-01715-9 and https://www.nature.com/articles/s41467-020-14779-y. 
 
 ## Table of Content
 
